@@ -7,7 +7,7 @@ Vue.component("ouerfooter", {
 			  	<el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
 			  	<el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
 			</el-row>
-		<div>
+		</div>
 	`,
 	data: function(){
 		return {

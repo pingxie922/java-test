@@ -2,7 +2,7 @@ jQuery(function($){
 
 	var minSize = 5; //最小字体
     var maxSize = 50;//最大字体
-    var newOne = 100; //生成雪花间隔
+    var newOne = 500; //生成雪花间隔
     var flakColor = "#fff"; //雪花颜色
     var flak = $("<div class='xh'></div>").css({position:"absolute","top":"0px"}).html("❉");//定义一个雪花
     var dhight = $(window).height(); //定义视图高度
