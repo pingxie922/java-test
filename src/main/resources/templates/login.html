@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/demo/static/css/reset.css">
         <link rel="stylesheet" href="/demo/static/css/supersized.css">
         <link rel="stylesheet" href="/demo/static/css/style.css">
-
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -118,7 +117,7 @@
 					return false;
 				}
 			 	$.ajax({
-		            url:"/demo/login.do",
+		            url:"/demo/UserLogin/login.do",
 		            data:{
 		            	telphone : t.val(),
 		            	password : p.val()
@@ -127,9 +126,10 @@
 		            type: 'POST',
 		            success:function(json) {
 		            	if(json.success) {
-		            		$("#ts").html("登陆成功");
-			            	is_show();
-			            	return true;
+		            		//$("#ts").html("登陆成功");
+			            	//is_show();
+			            	window.location.href= json.url;
+			            	//return true;
 		            	} else {
 		            		$("#ts").html(json.msg);
 			            	is_show();
@@ -155,7 +155,7 @@
 					return false;
 				}
 			 	$.ajax({
-		            url:"/demo/isExistByPhone.do",
+		            url:"/demo/UserLogin/isExistByPhone.do",
 		            data:{
 		            	telPhone : t.val()
 		            },
@@ -208,7 +208,7 @@
 					return false;
 				}
 			 	$.ajax({
-		            url:"/demo/reg.do",
+		            url:"/demo/UserLogin/reg.do",
 		            data:{
 		            	telphone : t.val(),
 		            	password : p.val(),
@@ -219,9 +219,10 @@
 		            type: 'POST',
 		            success:function(json) {
 		            	if(json.success) {
-		            		$("#ts").html(json.msg);
+		            		/* $("#ts").html(json.msg);
 			            	is_show();
-			            	return true;
+			            	return true; */
+		            		window.location.href= json.url;
 		            	} else {
 		            		$("#ts").html(json.msg);
 			            	is_show();
@@ -234,7 +235,7 @@
 		window.onload = function()
 		{
 			$.ajax({
-	            url:"/demo/getHomeStateMent.do",
+	            url:"/demo/UserLogin/getHomeStateMent.do",
 	            data:{},
 	            dataType: "json",
 	            type: 'POST',

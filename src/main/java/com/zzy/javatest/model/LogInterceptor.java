@@ -37,7 +37,7 @@ public class LogInterceptor implements HandlerInterceptor {
 		User user = (User) session.getAttribute(SessionUtil.LONGIN_USER);
 		if(user == null) {
 			log.info("被拦截了");
-			response.sendRedirect("/demo/toLogin.do");//跳转到登陆页面
+			response.sendRedirect("/demo/UserLogin/toLogin.do");//跳转到登陆页面
 			return false;
 		} 
 		return true;

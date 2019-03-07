@@ -18,27 +18,30 @@ public class ResultMap {
 	  * @param result
 	  * @return
 	  */
-	 public static Map<String, Object> success(Map<String, Object> map, Object result) {
+	 public static Map<String, Object> success(Map<String, Object> map, Object result, String url) {
 		 map.put("success", true);
 		 map.put("code", "0000");
 		 map.put("result", result);
+		 map.put("url", url);
 		 return map;
 	 }
 
 	 
-	 public static Map<String, Object> success(Map<String, Object> map, String msg, Object result) {
+	 public static Map<String, Object> success(Map<String, Object> map, String msg, Object result, String url) {
 		 map.put("success", true);
 		 map.put("code", "0000");
 		 map.put("msg", msg);
 		 map.put("result", result);
+		 map.put("url", url);
 		 return map;
 	 }
 	 
-	 public static Map<String, Object> success(Map<String, Object> map, String code, String msg, Object result) {
+	 public static Map<String, Object> success(Map<String, Object> map, String code, String msg, Object result, String url) {
 		 map.put("success", true);
 		 map.put("code", code);
 		 map.put("msg", msg);
 		 map.put("result", result);
+		 map.put("url", url);
 		 return map;
 	 }
 	 
@@ -48,26 +51,29 @@ public class ResultMap {
 	  * @param result
 	  * @return
 	  */
-	 public static Map<String, Object> error(Map<String, Object> map, String msg) {
+	 public static Map<String, Object> error(Map<String, Object> map, String msg, String url) {
 		 map.put("success", false);
 		 map.put("code", "1000");
 		 map.put("msg", msg);
+		 map.put("url", url);
 		 return map;
 	 }
 	 
-	 public static Map<String, Object> error(Map<String, Object> map, String msg, Object result) {
+	 public static Map<String, Object> error(Map<String, Object> map, String msg, Object result, String url) {
 		 map.put("success", false);
 		 map.put("code", "1000");
 		 map.put("msg", msg);
 		 map.put("result", result);
+		 map.put("url", url);
 		 return map;
 	 }
 	 
-	 public static Map<String, Object> error(Map<String, Object> map, String code, String msg, Object result) {
+	 public static Map<String, Object> error(Map<String, Object> map, String code, String msg, Object result, String url) {
 		 map.put("success", false);
 		 map.put("code", code);
 		 map.put("msg", msg);
 		 map.put("result", result);
+		 map.put("url", url);
 		 return map;
 	 }
 	
