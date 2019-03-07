@@ -30,9 +30,16 @@ Vue.component("ouerheader", {
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
 		}
+	},
+	created () {
+	    axios.post('http://jsonplaceholder.typicode.com/users').then(function (result)  {
+	        console.log(result)
+	    })
 	}
 })
 
 new Vue({
 	el: "#header"
 });
+
+
