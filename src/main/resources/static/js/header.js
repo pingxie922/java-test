@@ -28,12 +28,13 @@ Vue.component("ouerheader", {
 	},
 	methods: {
 		handleSelect(key, keyPath) {
-			console.log(key, keyPath);
+			console.log(keyPath);
+			alert(keyPath);
 		}
 	},
 	created () {
 	    axios.post('http://jsonplaceholder.typicode.com/users').then(function (result)  {
-	        console.log(result)
+	    	var json = result.data;
 	    })
 	}
 })

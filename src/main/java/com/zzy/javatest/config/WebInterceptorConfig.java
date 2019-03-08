@@ -42,7 +42,7 @@ public class WebInterceptorConfig extends WebMvcConfigurationSupport {
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(logInterceptor).excludePathPatterns("/static/**","/templates/**","/UserLogin/**","/home.do");//.excludePathPatterns("/adminUser/login")过滤哪些不拦截的请求
+		registry.addInterceptor(logInterceptor).excludePathPatterns("/static/**","/templates/**","/UserLogin/**","/home.do","/home/**");//.excludePathPatterns("/adminUser/login")过滤哪些不拦截的请求
 		super.addInterceptors(registry);
 	}
 	/**
