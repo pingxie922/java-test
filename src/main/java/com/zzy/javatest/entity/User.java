@@ -19,6 +19,7 @@ import org.apache.ibatis.type.Alias;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.Version;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -44,10 +45,10 @@ public class User implements Serializable {
      *  仅支持 updateById(id) 与 update(entity, wrapper) 方法
      *  在 update(entity, wrapper) 方法下, wrapper 不能复用!!!
      */
-/*
+
     @Version
     private Integer version;
-*/
+
 	@TableId(value="id",type=IdType.AUTO)		//设置id自增方式为数据库自增的方式
     private Integer id;
 

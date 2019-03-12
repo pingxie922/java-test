@@ -4,27 +4,30 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.Version;
-
-import java.time.LocalDateTime;
-import org.aspectj.lang.annotation.Aspect;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
+import org.aspectj.lang.annotation.Aspect;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 首页名言
+ * 文章数据统计
  * </p>
  *
  * @author yang
- * @since 2019-01-23
+ * @since 2019-03-12
  */
-@Aspect("HomeStatement")
+@Aspect("MyArticleStatistics")
 @Data
 @ToString
-@TableName(value="home_statement")
-public class HomeStatement implements Serializable {
+@TableName(value="my_article_statistics")
+public class MyArticleStatistics implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,40 +35,34 @@ public class HomeStatement implements Serializable {
     private Integer version;
     
     /**
-     * id
+     *  主键
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 英语
+     * 文章Id
      */
-    @TableField("English")
-    private String English;
+    @TableField("articleId")
+    private Integer articleId;
 
     /**
-     * 汉语
+     * 收藏数量
      */
-    @TableField("Chinese")
-    private String Chinese;
+    @TableField("collectNum")
+    private Integer collectNum;
 
     /**
-     * 创建时间
+     * 点赞数量
      */
-    @TableField("createDate")
-    private LocalDateTime createDate;
+    @TableField("likeNum")
+    private Integer likeNum;
 
     /**
-     * 提供人
+     * 阅读量
      */
-    @TableField("userId")
-    private Integer userId;
-
-    /**
-     * 展示时间
-     */
-    @TableField("showDate")
-    private LocalDateTime showDate;
+    @TableField("readNum")
+    private Integer readNum;
 
 
 }

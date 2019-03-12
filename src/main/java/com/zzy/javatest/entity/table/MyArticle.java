@@ -4,28 +4,32 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.Version;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+
 import org.aspectj.lang.annotation.Aspect;
+
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * <p>
- * Banner实体
+ * 文章
  * </p>
  *
  * @author yang
- * @since 2019-03-07
+ * @since 2019-03-12
  */
-@Aspect("Banner")
+@Aspect("MyArticle")
 @Data
 @ToString
-@TableName(value="banner")
-public class Banner implements Serializable {
+@TableName(value="my_article")
+public class MyArticle implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,25 +43,19 @@ public class Banner implements Serializable {
     private Integer id;
 
     /**
-     * banner地址
-     */
-    private String url;
-
-    /**
-     * 图片的链接
+     * 图片路径
      */
     private String path;
 
-    @TableField("createDate")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date createDate;
+    /**
+     * 文章标题
+     */
+    private String title;
 
     /**
-     * 到期时间
+     * 文章内容
      */
-    @TableField("expirationDate")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date expirationDate;
+    private String content;
 
     /**
      * 是否删除  0不删除  1删除
@@ -65,6 +63,17 @@ public class Banner implements Serializable {
     @TableField("isDelete")
     private Integer isDelete;
 
-    private String details;
+    /**
+     * 作者
+     */
+    @TableField("userId")
+    private Integer userId;
+
+    /**
+     * 编辑时间
+     */
+    @TableField("createDate")
+    private Date createDate;
+
 
 }

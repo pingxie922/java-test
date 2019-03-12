@@ -12,6 +12,13 @@ Vue.component("container", {
 		}
 	},
 	methods: {
+	},
+	created: function() {
+	  	var that = this;
+		axios.post('/demo/home/getBanner.do').then(function (result)  {
+	    	var obj = JSON.parse(JSON.stringify(result));
+	    	var json = obj.data;
+	    });
 	}
 })
 
