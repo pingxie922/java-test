@@ -61,5 +61,6 @@ public class Banner implements Serializable {
     @TableField("isDelete")
     private Integer isDelete;
 
+    private String desc;
 
 }
