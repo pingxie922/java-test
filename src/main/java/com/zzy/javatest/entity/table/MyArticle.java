@@ -4,10 +4,12 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.Version;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import com.zzy.javatest.entity.User;
 import org.aspectj.lang.annotation.Aspect;
 
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -72,8 +74,16 @@ public class MyArticle implements Serializable {
     /**
      * 编辑时间
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @TableField("createDate")
     private Date createDate;
+    
+    /**
+     * 简介
+     */
+    private String introduction;
 
+    private MyArticleStatistics myArticleStatistics;
 
+    private User user;
 }

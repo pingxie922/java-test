@@ -48,12 +48,20 @@
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
-    line-height: 1.5em;
+    text-align: left;
+    line-height: 1.2em;
   }
   
+.el-main > h3 {
+	margin:10px 0;
+}
+
+.el-main > span {
+	font-size: 12px;
+}
+
 .el-container {
-	height: 250px;
+	max-height: 250px;
     margin: 30px 0 0 0;
   }
   
@@ -61,6 +69,20 @@
 	text-align: center;
 	margin: 10px auto 0 auto;
 }
+
+#centerhome .el-row {
+    margin-bottom: 10px;
+    font-size: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+#centerhome .el-row > .el-col :hover {
+	color: blue;
+	cursor:pointer;
+  }
+
+
 /* footer */
 #ouerfooter{
 	margin-left: auto;

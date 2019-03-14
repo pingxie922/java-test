@@ -1,8 +1,10 @@
 package com.zzy.javatest.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,13 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zzy.javatest.entity.User;
 import com.zzy.javatest.entity.table.MyArticle;
+import com.zzy.javatest.entity.table.MyArticleStatistics;
 import com.zzy.javatest.service.HomeService;
 import com.zzy.javatest.service.table.BannerService;
 
 import lombok.extern.slf4j.Slf4j;
+
+import javax.validation.constraints.Size;
 
 @Slf4j
 @Controller
@@ -32,7 +37,6 @@ public class HomeController {
 	
 	/**
 	 * 获取banner图
-	 * @param user
 	 * @return
 	 */
 	@RequestMapping("/home/getBanner")
@@ -50,16 +54,16 @@ public class HomeController {
 	
 	/**
 	 * 获取文章
-	 * @param user
 	 * @return
 	 */
 	@RequestMapping("/home/getArticle")
 	@ResponseBody
-	public IPage<MyArticle> getArticle(Integer page, Integer size) {
+	public IPage<MyArticle> getArticle(Long page, Long size) {
 		IPage<MyArticle> list = null;
+		Page<Object> objectPage = new Page<>(page, size);
 		try {
 			log.info("第几页：" + page + "每页几条：" + size);
-			list = homeService.getArticle(page, size);
+			list = homeService.getArticle(objectPage);
 			log.info("返回结果" + list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,5 +71,20 @@ public class HomeController {
 		return list;
 	}
 	
+	/**
+	 * 获取文章
+	 * @return
+	 */
+	@RequestMapping("/home/addLike")
+	@ResponseBody
+	public Map<String, Object> addLike(Integer id) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		try {
+			map = homeService.addLike(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return map;
+	}
 	
 }

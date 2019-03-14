@@ -9,6 +9,7 @@
  */
 package com.zzy.javatest.config;
 
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -52,8 +53,8 @@ public class MybatisPlusConfig {
           如果version不对，就更新失败
      * @return
      */
-   /* @Bean
+    @Bean
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
-    }*/
+    }
 }

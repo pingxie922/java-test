@@ -1,9 +1,12 @@
 package com.zzy.javatest.service.impl.table;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zzy.javatest.entity.table.MyArticle;
 import com.zzy.javatest.mapper.MyArticleMapper;
 import com.zzy.javatest.service.table.MyArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +20,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyArticleServiceImpl extends ServiceImpl<MyArticleMapper, MyArticle> implements MyArticleService {
 
+    @Autowired
+    private MyArticleMapper mapper;
+
+    @Override
+    public IPage<MyArticle> getAllArticle(Page page) {
+        return mapper.getAllArticle(page);
+    }
 }
