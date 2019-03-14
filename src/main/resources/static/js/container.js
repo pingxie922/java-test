@@ -4,7 +4,10 @@ Vue.component("container", {
 			<el-container v-for="(articles,index) in allArticles" :key="index">
 		  		<el-aside width="30%" style="overflow: hidden; padding: 10px;"><img style="width: 100%; height: 100%;" :src="articles.path" class="bannerImg"/></el-aside>
 		  		<el-main style="overflow: hidden; padding: 10px;">
-		  			<h3>{{articles.title}}</h3>
+		  			<h3>
+		  				<el-tag size="mini">{{articles.tag}}</el-tag>
+		  				<a @click="toArticle(articles.id)" :href="toUrl">{{articles.title}}</a>
+		  			</h3>
 		  			<el-row :gutter="20">
 						 <el-col :span="8">{{articles.createDate}}</el-col>
 						 <el-col :span="4">作者:{{articles.user.name}}</el-col>
@@ -23,8 +26,6 @@ Vue.component("container", {
 		      	layout="prev, pager, next, total, jumper"
 		      	:total="total">
     		</el-pagination>
-    		
-    		<el-button type="text" @click="open5">点击打开 Message Box</el-button>
 		</div>
 	`,
 	data: function(){
@@ -32,7 +33,8 @@ Vue.component("container", {
 			currentPage: 1,
 	        total: 500,
 	        size: 15,
-	        allArticles: []
+	        allArticles: [],
+			toUrl: ''
 		}
 	},
 	methods: {
@@ -41,11 +43,11 @@ Vue.component("container", {
 	      	this.currentPage = val;
 	      	this.getArticle();
 	    },
-        open5(msg) {
-            this.$alert('<strong>'+msg+'</strong>', '提示信息', {
-                dangerouslyUseHTMLString: true
-            });
-        },
+        toArticle: function(num) {
+            var sel = this;
+            console.log(num);
+			sel.toUrl = '/demo/article.do?' + num;
+		},
 	    addLike: function(num, index) {
 	    	var sel = this;
 	    	var param=new URLSearchParams();
@@ -60,7 +62,7 @@ Vue.component("container", {
 				// 		1 ： Vue.set(sel.allArticles[index], 'likeNum', likeNum);
 				// 		2 ： Vue.set(sel.allArticles, sel.allArticles[index], json.result);
 				// 		3 ： Vue.set(sel.allArticles, index, json.result);
-                if(json.success()) {
+                if(json.success) {
                     Vue.set(sel.allArticles[index].myArticleStatistics, 'likeNum', likeNum);
 				}
             });

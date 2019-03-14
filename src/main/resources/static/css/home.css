@@ -1,4 +1,7 @@
 /* 头部样式  */
+body a{
+    cursor:pointer;
+}
 #header{
 	text-align: center;
 	margin: 15px auto 0 auto;
@@ -55,7 +58,9 @@
 .el-main > h3 {
 	margin:10px 0;
 }
-
+.el-main > h3 > a:hover{
+    color: deepskyblue;
+}
 .el-main > span {
 	font-size: 12px;
 }
@@ -69,7 +74,9 @@
 	text-align: center;
 	margin: 10px auto 0 auto;
 }
-
+#centerhome .el-tag {
+	margin: 0 10px 0 5px    
+  }
 #centerhome .el-row {
     margin-bottom: 10px;
     font-size: 10px;

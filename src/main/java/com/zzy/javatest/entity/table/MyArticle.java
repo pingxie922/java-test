@@ -82,6 +82,8 @@ public class MyArticle implements Serializable {
      * 简介
      */
     private String introduction;
+    
+    private String tag;
 
     private MyArticleStatistics myArticleStatistics;
 

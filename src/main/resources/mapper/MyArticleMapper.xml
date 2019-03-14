@@ -6,9 +6,9 @@
 		<id property="id" column="id" />
 		<result property="path" column="path" />
 		<result property="title" column="title" />
-		<result property="content" column="content" />
 		<result property="createDate" column="createDate" />
 		<result property="introduction" column="introduction" />
+		<result property="tag" column="tag" />
 		<collection property="myArticleStatistics" ofType="com.zzy.javatest.entity.table.MyArticleStatistics" >
 			<result property="collectNum" column="collectNum" />
 			<result property="likeNum" column="likeNum" />
@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<select id="getAllArticle" resultMap="myArticleMap" resultType="com.zzy.javatest.entity.table.MyArticle">
-		SELECT art.id,art.path, art.title, art.content,
+		SELECT art.id,art.path, art.title, art.tag,
 			art.createDate, art.introduction, mas.collectNum,
 			mas.likeNum, mas.readNum, u.name
 		FROM my_article art
