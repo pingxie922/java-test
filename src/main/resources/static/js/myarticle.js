@@ -1,10 +1,39 @@
 Vue.component("myarticle", {
 	template: `
-		
+		<div id="container">
+			<el-container>
+				<el-main>
+					<h3 style="text-align:center">{{readArticle.title}}</h3>
+					<el-row style="margin: 0 auto; font-size: 12px;" :gutter="20">
+					  	<el-col :span="10">{{readArticle.createDate}}</el-col>
+					  	<el-col :span="6">作者:{{readArticle.user.name}}</el-col>
+					  	<el-col :span="4">阅读({{readArticle.myArticleStatistics.readNum}})</el-col>
+					  	<el-col :span="4">评论({{readArticle.myArticleStatistics.collectNum}})</el-col>
+					</el-row>
+					<span v-html="readArticle.content"></span>
+				</el-main>
+		  		<el-aside width="350px">Aside</el-aside>
+			</el-container>
+		</div>
 	`,
 	data: function(){
 		return {
-			readArticle: ''
+			readArticle: {
+				"id": 1,
+				"title": '',
+				"content": '',
+				"createDate": '',
+				"introduction": '',
+				"tag": '',
+				"myArticleStatistics": {
+					"collectNum": 0,
+					"likeNum": 6,
+					"readNum": 0
+				},
+				"user": {
+					"name": ''
+				}
+			}
 		}
 	},
 	methods: {

@@ -3,8 +3,8 @@ Vue.component("ouerheader", {
 		<el-row :gutter="20">
 		  	<el-col :span="9"><div class="grid-content bg-purple"></div></el-col>
 		  	<el-col :span="15">
-		  		<el-menu style="padding-left:  20%" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-				  	<el-menu-item index="1">首页</el-menu-item>
+		  		<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+				  	<el-menu-item index="1"><a href="/demo/home.do">首页</a></el-menu-item>
 				  	<el-submenu index="2">
 				    	<template slot="title">我的工作台</template>
 				    	<el-menu-item index="2-1">选项1</el-menu-item>
@@ -21,14 +21,12 @@ Vue.component("ouerheader", {
 	`,
 	data: function(){
 		return {
-			activeIndex: '1',
-			activeIndex2: '1'
+			activeIndex: '1'
 		}
 	},
 	methods: {
 		handleSelect(key, keyPath) {
 			console.log(keyPath);
-			alert(keyPath);
 		}
 	},
 	created () {
