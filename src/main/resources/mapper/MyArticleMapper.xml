@@ -6,6 +6,7 @@
 		<id property="id" column="id" />
 		<result property="path" column="path" />
 		<result property="title" column="title" />
+		<result property="content" column="content" />
 		<result property="createDate" column="createDate" />
 		<result property="introduction" column="introduction" />
 		<result property="tag" column="tag" />
@@ -18,9 +19,23 @@
 			<result property="name" column="name" />
 		</collection>
 	</resultMap>
-	
+
+	<sql id="where">
+		<where>
+			<if test="myArticle.title != null and myArticle.title != ''">
+				and art.title like concat('%', #{myArticle.title}, '%')
+			</if>
+			<if test="myArticle.tag != null and myArticle.tag != ''">
+				and art.tag = #{myArticle.tag}
+			</if>
+			<if test="myArticle.id != null and myArticle.id != 0">
+				and art.id = #{myArticle.id}
+			</if>
+		</where>
+	</sql>
+
 	<select id="getAllArticle" resultMap="myArticleMap" resultType="com.zzy.javatest.entity.table.MyArticle">
-		SELECT art.id,art.path, art.title, art.tag,
+		SELECT art.id,art.path, art.title, art.tag, art.content,
 			art.createDate, art.introduction, mas.collectNum,
 			mas.likeNum, mas.readNum, u.name
 		FROM my_article art
@@ -28,7 +43,12 @@
 		ON art.id = mas.articleId
 		LEFT JOIN user u
 		ON art.userId = u.id
-		ORDER BY art.id DESC
+		<include refid="where" />
+		ORDER BY ID DESC
 	</select>
 
 </mapper>
+
+
+
+

@@ -15,6 +15,6 @@ import com.zzy.javatest.entity.table.MyArticle;
  */
 public interface MyArticleService extends IService<MyArticle> {
 
-    IPage<MyArticle> getAllArticle(Page page);
+    IPage<MyArticle> getAllArticle(Page page, MyArticle myArticle);
 
 }

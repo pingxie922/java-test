@@ -24,7 +24,7 @@ public class MyArticleServiceImpl extends ServiceImpl<MyArticleMapper, MyArticle
     private MyArticleMapper mapper;
 
     @Override
-    public IPage<MyArticle> getAllArticle(Page page) {
-        return mapper.getAllArticle(page);
+    public IPage<MyArticle> getAllArticle(Page page, MyArticle myArticle) {
+        return mapper.getAllArticle(page, myArticle);
     }
 }

@@ -32,7 +32,7 @@ Vue.component("container", {
 		return {
 			currentPage: 1,
 	        total: 500,
-	        size: 15,
+	        size: 10,
 	        allArticles: [],
 			toUrl: ''
 		}
@@ -71,7 +71,7 @@ Vue.component("container", {
 	    	var that = this;
 		  	var param=new URLSearchParams();
 	    	param.append('page',that.currentPage);
-	    	param.append('size',2);
+	    	param.append('size',that.size);
 		  	axios.post('/demo/home/getArticle.do',param).then(function (result) {
 		    	var obj = JSON.parse(JSON.stringify(result));
 		    	var json = obj.data;

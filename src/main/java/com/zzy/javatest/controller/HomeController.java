@@ -58,12 +58,18 @@ public class HomeController {
 	 */
 	@RequestMapping("/home/getArticle")
 	@ResponseBody
-	public IPage<MyArticle> getArticle(Long page, Long size) {
+	public IPage<MyArticle> getArticle(Long page, Long size, MyArticle myArticle) {
 		IPage<MyArticle> list = null;
+		if (page == null || page == 0){
+			page = 1L;
+		}
+		if (size == null || size == 0){
+			size = 10L;
+		}
 		Page<Object> objectPage = new Page<>(page, size);
 		try {
 			log.info("第几页：" + page + "每页几条：" + size);
-			list = homeService.getArticle(objectPage);
+			list = homeService.getArticle(objectPage, myArticle);
 			log.info("返回结果" + list);
 		} catch (Exception e) {
 			e.printStackTrace();

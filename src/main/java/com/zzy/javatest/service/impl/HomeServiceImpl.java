@@ -52,9 +52,9 @@ public class HomeServiceImpl implements HomeService {
 	}
 
 	@Override
-	public IPage<MyArticle> getArticle(Page page) {
+	public IPage<MyArticle> getArticle(Page page, MyArticle myArticle) {
 		log.info("homeserviceImpl");
-		IPage<MyArticle> allArticle = myArticleService.getAllArticle(page);
+		IPage<MyArticle> allArticle = myArticleService.getAllArticle(page, myArticle);
 		if(allArticle != null)
 			return allArticle;
 		return null;

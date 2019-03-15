@@ -12,7 +12,7 @@ public interface HomeService {
 
 	List<Object> getBanner();
 
-	IPage<MyArticle> getArticle(Page page);
+	IPage<MyArticle> getArticle(Page page, MyArticle myArticle);
 
 	Map<String, Object> addLike(Integer id);
 
