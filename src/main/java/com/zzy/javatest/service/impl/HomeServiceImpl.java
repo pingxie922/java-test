@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -23,7 +23,6 @@ import com.zzy.javatest.service.HomeService;
 import com.zzy.javatest.service.table.BannerService;
 import com.zzy.javatest.service.table.MyArticleService;
 import com.zzy.javatest.service.table.MyArticleStatisticsService;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -61,7 +60,7 @@ public class HomeServiceImpl implements HomeService {
 	}
 
 	@Override
-	public Map<String, Object> addLike(Integer id) {
+	public Map<String, Object> addLike(Integer id, String str) {
 		Map<String,Object> map = new HashMap<String,Object>();
 		if(id != null && id != 0) {
 			QueryWrapper<MyArticleStatistics> queryWrapper = new QueryWrapper<MyArticleStatistics>().eq("id", id);
@@ -71,8 +70,14 @@ public class HomeServiceImpl implements HomeService {
 				ResultMap.error(map, "查询的结果为空");
 				return map;
 			}
-			Integer likeNum = myArticleStatistics.getLikeNum();
-			myArticleStatistics.setLikeNum(likeNum+1);
+			if(StringUtils.isNotEmpty(str) && "likeNum".equals(str)) {
+				Integer likeNum = myArticleStatistics.getLikeNum();
+				myArticleStatistics.setLikeNum(likeNum+1);
+			} 
+			if(StringUtils.isNotEmpty(str) && "readNum".equals(str)) {
+				Integer readNum = myArticleStatistics.getReadNum();
+				myArticleStatistics.setReadNum(readNum+1);
+			}
 			UpdateWrapper<MyArticleStatistics> updateWrapper = new UpdateWrapper<MyArticleStatistics>().eq("id", id);
 			boolean update = myArticleStatisticsService.update(myArticleStatistics, updateWrapper);
 			if(update) {

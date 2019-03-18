@@ -83,10 +83,10 @@ public class HomeController {
 	 */
 	@RequestMapping("/home/addLike")
 	@ResponseBody
-	public Map<String, Object> addLike(Integer id) {
+	public Map<String, Object> addLike(Integer id, String str) {
 		Map<String,Object> map = new HashMap<String,Object>();
 		try {
-			map = homeService.addLike(id);
+			map = homeService.addLike(id, str);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

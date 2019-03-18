@@ -46,12 +46,18 @@ Vue.component("container", {
         toArticle: function(num) {
             var sel = this;
             console.log(num);
-			sel.toUrl = '/demo/article.do?' + num;
+            sel.toUrl = '/demo/article.do?' + num;
+            var param=new URLSearchParams();
+	    	param.append('id',num);
+	    	param.append('str','readNum');
+			axios.post('/demo/home/addLike.do', param).then(function (result) {
+            });
 		},
 	    addLike: function(num, index) {
 	    	var sel = this;
 	    	var param=new URLSearchParams();
 	    	param.append('id',num);
+	    	param.append('str','likeNum');
 			axios.post('/demo/home/addLike.do', param).then(function (result) {
                 var obj = JSON.parse(JSON.stringify(result));
                 var json = obj.data;
