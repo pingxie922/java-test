@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzy.javatest.mapper.MyArticleCommentMapper">
+
+	<resultMap id="myArticleCommentMap" type="com.zzy.javatest.entity.table.MyArticleComment">
+		<id property="id" column="id" />
+		<result property="comment" column="comment" />
+		<result property="commentDate" column="commentDate" />
+		<collection property="user" ofType="com.zzy.javatest.entity.User">
+			<result property="name" column="name" />
+		</collection>
+	</resultMap>
+
+	<sql id="where">
+		<where>
+			1=1 and mac.isDelete = 0
+			<if test="id != null and id &gt; 0">
+				and mac.articleId = #{id}
+			</if>
+		</where>
+	</sql>
+
+	<select id="getArticleCommentByPage" resultMap="myArticleCommentMap" resultType="com.zzy.javatest.entity.table.MyArticleComment">
+		SELECT mac.id, mac.comment, mac.commentDate,
+			 u.name
+		FROM my_article_comment mac
+		LEFT JOIN user u
+		ON mac.commentUserId = u.id
+		<include refid="where" />
+		ORDER BY ID DESC
+	</select>
+
+</mapper>
+
+
+
+

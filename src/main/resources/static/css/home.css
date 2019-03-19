@@ -71,21 +71,22 @@ body a{
     border-radius: 4px;
   }
   
-#centerhome > .el-pagination{
+#container > .el-pagination{
 	text-align: center;
 	margin: 10px auto 0 auto;
 }
-#centerhome .el-tag {
+#container .el-tag {
 	margin: 0 10px 0 5px    
   }
-#centerhome .el-row {
+#container .el-row {
     margin-bottom: 10px;
     font-size: 10px;
+    width: 100%;
     &:last-child {
       margin-bottom: 0;
     }
   }
-#centerhome .el-row > .el-col :hover {
+#container .el-row > .el-col :hover {
 	color: blue;
 	cursor:pointer;
   }
@@ -127,15 +128,23 @@ body a{
   
   
   
+#myarticle{
+	margin: 25px auto 0 auto;
+	width: 60%
+}
   
-#container .grid-content {
+  
+#containera .grid-content {
 	font-size: 12px;
     border-radius: 4px;
     min-height: 20px;
 }
-#container .el-row {
+#containera .el-row {
 	width: 50%;
 }
-    
+#containera .el-pagination{
+	text-align: center;
+	margin: 10px auto 0 auto;
+}
     
     

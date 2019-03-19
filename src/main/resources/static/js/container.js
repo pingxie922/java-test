@@ -50,7 +50,7 @@ Vue.component("container", {
             var param=new URLSearchParams();
 	    	param.append('id',num);
 	    	param.append('str','readNum');
-			axios.post('/demo/home/addLike.do', param).then(function (result) {
+			axios.post('/demo/article/addLike.do', param).then(function (result) {
             });
 		},
 	    addLike: function(num, index) {
@@ -58,7 +58,7 @@ Vue.component("container", {
 	    	var param=new URLSearchParams();
 	    	param.append('id',num);
 	    	param.append('str','likeNum');
-			axios.post('/demo/home/addLike.do', param).then(function (result) {
+			axios.post('/demo/article/addLike.do', param).then(function (result) {
                 var obj = JSON.parse(JSON.stringify(result));
                 var json = obj.data;
                 var likeNum = json.result.likeNum;

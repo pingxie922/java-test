@@ -77,20 +77,4 @@ public class HomeController {
 		return list;
 	}
 	
-	/**
-	 * 获取文章
-	 * @return
-	 */
-	@RequestMapping("/home/addLike")
-	@ResponseBody
-	public Map<String, Object> addLike(Integer id, String str) {
-		Map<String,Object> map = new HashMap<String,Object>();
-		try {
-			map = homeService.addLike(id, str);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return map;
-	}
-	
 }

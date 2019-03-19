@@ -81,5 +81,5 @@ public class MyArticleComment implements Serializable {
      */
     private Integer version;
 
-
+    private User user;
 }

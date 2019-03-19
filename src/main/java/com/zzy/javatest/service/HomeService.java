@@ -14,6 +14,4 @@ public interface HomeService {
 
 	IPage<MyArticle> getArticle(Page page, MyArticle myArticle);
 
-	Map<String, Object> addLike(Integer id, String str);
-
 }

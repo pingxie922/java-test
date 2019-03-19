@@ -35,9 +35,6 @@ public class HomeServiceImpl implements HomeService {
 	@Autowired
 	private MyArticleService myArticleService;
 	
-	@Autowired
-	private MyArticleStatisticsService myArticleStatisticsService;
-	
 	@Override
 	public List<Object> getBanner() {
 		QueryWrapper<Banner> queryWrapper = new QueryWrapper<Banner>()
@@ -59,38 +56,4 @@ public class HomeServiceImpl implements HomeService {
 		return null;
 	}
 
-	@Override
-	public Map<String, Object> addLike(Integer id, String str) {
-		Map<String,Object> map = new HashMap<String,Object>();
-		if(id != null && id != 0) {
-			QueryWrapper<MyArticleStatistics> queryWrapper = new QueryWrapper<MyArticleStatistics>().eq("id", id);
-			MyArticleStatistics myArticleStatistics = myArticleStatisticsService.getOne(queryWrapper);
-			log.info("查询的结果是：" + myArticleStatistics);
-			if(myArticleStatistics == null) {
-				ResultMap.error(map, "查询的结果为空");
-				return map;
-			}
-			if(StringUtils.isNotEmpty(str) && "likeNum".equals(str)) {
-				Integer likeNum = myArticleStatistics.getLikeNum();
-				myArticleStatistics.setLikeNum(likeNum+1);
-			} 
-			if(StringUtils.isNotEmpty(str) && "readNum".equals(str)) {
-				Integer readNum = myArticleStatistics.getReadNum();
-				myArticleStatistics.setReadNum(readNum+1);
-			}
-			UpdateWrapper<MyArticleStatistics> updateWrapper = new UpdateWrapper<MyArticleStatistics>().eq("id", id);
-			boolean update = myArticleStatisticsService.update(myArticleStatistics, updateWrapper);
-			if(update) {
-				ResultMap.success(map, myArticleStatistics);
-				return map;
-			}
-			ResultMap.error(map, "修改失败");
-			return map;
-		}
-		ResultMap.error(map, "id为空");
-		return map;
-	}
-
-	
-	
 }

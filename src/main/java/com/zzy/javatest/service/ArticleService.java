@@ -9,6 +9,12 @@
  */
 package com.zzy.javatest.service;
 
+import java.util.Map;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zzy.javatest.entity.table.MyArticle;
+
 /**
  * 〈一句话功能简述〉<br> 
  * 〈描述：service〉
@@ -19,4 +25,9 @@ package com.zzy.javatest.service;
  */
 
 public interface ArticleService {
+	
+	Map<String, Object> addLike(Integer id, String str);
+
+	IPage<MyArticle> getArticleCommentByPage(Page<Object> objectPage, Integer id);
+
 }
