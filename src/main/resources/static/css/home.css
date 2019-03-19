@@ -71,7 +71,7 @@ body a{
     border-radius: 4px;
   }
   
-#container > .el-pagination{
+#container  .el-pagination{
 	text-align: center;
 	margin: 10px auto 0 auto;
 }

@@ -30,9 +30,9 @@ Vue.component("ouerheader", {
 		}
 	},
 	created () {
-	    axios.post('http://jsonplaceholder.typicode.com/users').then(function (result)  {
+	    /*axios.post('http://jsonplaceholder.typicode.com/users').then(function (result)  {
 	    	var json = result.data;
-	    })
+	    })*/
 	}
 })
 
